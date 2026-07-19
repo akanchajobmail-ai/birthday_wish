@@ -8,6 +8,10 @@ import '../styles/intro.css';
 export default function App() {
   const [currentView, setCurrentView] = useState('intro');
 
+  const resetExperience = () => {
+    setCurrentView('intro');
+  };
+
   return (
     <div className="size-full flex items-center justify-center">
       {currentView === 'intro' && (
@@ -16,7 +20,9 @@ export default function App() {
       {currentView === 'puzzle' && (
         <PuzzleGame onHeartClick={() => setCurrentView('typewriter')} />
       )}
-      {currentView === 'typewriter' && <WishMessage />}
+      {currentView === 'typewriter' && (
+        <WishMessage onRestart={resetExperience} />
+      )}
     </div>
   );
 }

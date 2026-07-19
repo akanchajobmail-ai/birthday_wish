@@ -1,6 +1,6 @@
 import { useState } from "react";
 import leftImg from "../../../images/hrt1.png";
-import rightImg from "../../../images/hrt2.png";
+import rightImg from "../../../images/htr2.png";
 
 export function DraggableItem({ item, section, index, onDragStart }) {
   const [isDragging, setIsDragging] = useState(false);

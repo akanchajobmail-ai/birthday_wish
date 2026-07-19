@@ -1,31 +1,31 @@
 
 /* ---- BDAY INTRO MESSAGES ---- */
 export const INTRO_MESSAGES = {
-  title: 'Is it your birthday today??',
-  subtitle: 'Something magical is about to happen... ✨',
-  description1: 'But first we need to fix your heart 💕',
-  description2: 'Because it deals with so much and needs love ',
+  title: 'HELLO LAVANYA',
+  subtitle: 'IT\'S YOUR HAPPY HAPPY BIRTHDAY!',
+  description1: 'But first we need to DO SOMETHING 💕',
+  description2: 'Because this day deserves a little extra magic ✨',
   button: 'Let\'s Begin! <3',
 };
 
 /* ---- PUZZLE GAME TEXT ---- */
 export const PUZZLE_MESSAGES = {
-  title: '💕 Mend the Heart 💕',
+  title: '💕 COMPLETE THE PUZZLE 💕',
   hint: 'Left piece goes on the left, right piece goes on the right',
 };
 
 /* ---- SUCCESS SCREEN TEXT ---- */
 export const SUCCESS_MESSAGES = {
-  completed: '✨ Your Heart is Whole Again! ✨',
+  completed: '✨ OHHOOHHOOO YOU DID IT! ✨',
   instruction: '💕 Close your eyes and make a beautiful wish... 💕',
-  cta: 'Tap the heart when you\'re ready to see your birthday message 🐻',
+  cta: 'Knock on your head when you\'re ready to see your birthday message 🐻',
 };
 
 /* ---- WISH MESSAGES ---- */
 export const WISH_MESSAGES = [
-  "One year older, ten times hotter.. ",
+  "One year older, twenty times hotter.. ",
   "May all your delulu come trululu.. ",
-  "Have a purrfect ♪(^∇^*) birthday.. ",
+  "Have a pretty pinky birthday.. ",
   "A million extra wishes to you!.. ",
   "You are a limited edition with unlimited potential.. ",
   "You are flippin' awesome.. ",

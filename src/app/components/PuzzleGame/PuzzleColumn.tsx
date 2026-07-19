@@ -1,7 +1,7 @@
 import { DraggableItem, PairedItem } from "./DraggableItem";
 import { getPairedItems } from "../../utils/puzzleLogic";
 import leftImg from "../../../images/hrt1.png";
-import rightImg from "../../../images/hrt2.png";
+import rightImg from "../../../images/htr2.png";
 
 const SECTION_LABELS = {
   leftCol: "Left Piece",

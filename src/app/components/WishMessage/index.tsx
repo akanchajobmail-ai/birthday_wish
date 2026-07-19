@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import celebrateGif from '../../../images/celebrate.gif';
+import celebrationVideo from '../../../images/WhatsApp Video 2026-07-19 at 15.14.20.mp4';
 import { AnimatedText } from './AnimatedText';
 import { Heart, Sparkles, MoonStar } from 'lucide-react';
 import { WISH_MESSAGES, WISH_PAGE_TEXT } from '../../data/messages';
@@ -25,16 +26,28 @@ const decorations = [
 ];
 
 // THIS FUNC SHOWS THE WISH MESSAGES WITH STYLING AND ANIMATIONS
-export function WishMessage() {
+export function WishMessage({ onRestart }) {
   const [messageIndex, setMessageIndex] = useState(0);
+  const [videoFailed, setVideoFailed] = useState(false);
+  const timeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
     playHBD();
-    return () => stopHBD();
+
+    return () => {
+      if (timeoutRef.current) {
+        window.clearTimeout(timeoutRef.current);
+      }
+      stopHBD();
+    };
   }, []);
 
   const handleComplete = () => {
-    setTimeout(() => {
+    if (timeoutRef.current) {
+      window.clearTimeout(timeoutRef.current);
+    }
+
+    timeoutRef.current = window.setTimeout(() => {
       setMessageIndex((prev) => (prev + 1) % WISH_MESSAGES.length);
     }, 1000);
   };
@@ -85,16 +98,37 @@ export function WishMessage() {
           </div>
         </div>
 
-        <div className="text-center mt-6">
+        <div className="text-center mt-6 space-y-3">
           <p className="text-pink-700/60 italic text-sm">{WISH_PAGE_TEXT}</p>
+          <button
+            type="button"
+            onClick={onRestart}
+            className="rounded-full bg-pink-600 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-pink-300/60 transition hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400"
+          >
+            Start again
+          </button>
         </div>
       </div>
       <div className="absolute bottom-4 right-4 z-30 pointer-events-none">
-        <img
-          src={celebrateGif}
-          alt="Celebrate"
-          className="w-28 sm:w-40 md:w-48 max-w-none block"
-        />
+        {videoFailed ? (
+          <img
+            src={celebrateGif}
+            alt="Celebrate"
+            className="w-28 sm:w-40 md:w-48 max-w-none block"
+          />
+        ) : (
+          <video
+            src={celebrationVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            poster={celebrateGif}
+            className="w-28 sm:w-40 md:w-48 max-w-none block"
+            onError={() => setVideoFailed(true)}
+          />
+        )}
       </div>
     </div>
   );
