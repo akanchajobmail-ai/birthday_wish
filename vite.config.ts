@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  base: '/birthday_wish/',
+  base: '/lav2026/',
   plugins: [
     react(),
     tailwindcss(),

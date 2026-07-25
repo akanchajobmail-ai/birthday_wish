@@ -6,10 +6,10 @@ import rightImg from "../../../images/htr2.png";
 const SECTION_LABELS = {
   leftCol: "Left Piece",
   InProgress: " ",
-  rightCol: "Right Piece"
+  rightCol: "Right Piece",
 };
 
-export function PuzzleColumn({ section, items, onDrop, onDragOver, onDragStart }) {
+export function PuzzleColumn({ section, items, onDrop, onDragOver, onDragStart, onTouchDrop }) {
   const isCenterColumn = section === "InProgress";
 
   if (isCenterColumn) {
@@ -18,24 +18,25 @@ export function PuzzleColumn({ section, items, onDrop, onDragOver, onDragStart }
     const rightUnpaired = unpaired.find((u) => u.side === "right");
 
     return (
-      <div 
-        onDrop={() => onDrop(section)} 
-        onDragOver={onDragOver} 
+      <div
+        data-section={section}
+        onDrop={() => onDrop(section)}
+        onDragOver={onDragOver}
         className="w-full min-h-32 sm:min-h-80 lg:min-h-[25rem] flex flex-col items-center relative px-2 sm:px-4 lg:px-6 py-2 sm:py-4 lg:py-6"
       >
-        {/* Heart Outline */}
+        {/* Heart outline guide */}
         <div className="absolute w-32 sm:w-64 lg:w-[16.5rem] h-32 sm:h-64 lg:h-[16.5rem] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none flex items-center justify-center">
-          <img 
-            src={leftImg} 
-            alt="outline-left" 
-            className="w-1/2 h-full object-contain opacity-[0.14] -mr-1" 
-            draggable={false} 
+          <img
+            src={leftImg}
+            alt="outline-left"
+            className="w-1/2 h-full object-contain opacity-[0.14] -mr-1"
+            draggable={false}
           />
-          <img 
-            src={rightImg} 
-            alt="outline-right" 
-            className="w-1/2 h-full object-contain opacity-[0.14] -ml-1" 
-            draggable={false} 
+          <img
+            src={rightImg}
+            alt="outline-right"
+            className="w-1/2 h-full object-contain opacity-[0.14] -ml-1"
+            draggable={false}
           />
         </div>
 
@@ -47,7 +48,7 @@ export function PuzzleColumn({ section, items, onDrop, onDragOver, onDragStart }
           <PairedItem key={idx} />
         ))}
 
-        {/* Center Slots */}
+        {/* Center slots for unpaired pieces */}
         <div className="absolute w-32 sm:w-64 lg:w-[16.5rem] h-32 sm:h-64 lg:h-[16.5rem] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex z-[8] pointer-events-none">
           <div className="w-1/2 h-full flex items-center justify-end pr-1">
             {leftUnpaired && (
@@ -57,6 +58,7 @@ export function PuzzleColumn({ section, items, onDrop, onDragOver, onDragStart }
                   section={section}
                   index={items.indexOf(leftUnpaired)}
                   onDragStart={onDragStart}
+                  onTouchDrop={onTouchDrop}
                 />
               </div>
             )}
@@ -69,6 +71,7 @@ export function PuzzleColumn({ section, items, onDrop, onDragOver, onDragStart }
                   section={section}
                   index={items.indexOf(rightUnpaired)}
                   onDragStart={onDragStart}
+                  onTouchDrop={onTouchDrop}
                 />
               </div>
             )}
@@ -79,10 +82,11 @@ export function PuzzleColumn({ section, items, onDrop, onDragOver, onDragStart }
   }
 
   return (
-    <div 
-      onDrop={() => onDrop(section)} 
-      onDragOver={onDragOver} 
-      className="w-full min-h-80 sm:min-h-80 lg:min-h-[25rem] flex flex-col items-center justify-center relative bg-transparent"
+    <div
+      data-section={section}
+      onDrop={() => onDrop(section)}
+      onDragOver={onDragOver}
+      className="w-full min-h-32 sm:min-h-80 lg:min-h-[25rem] flex flex-col items-center justify-center relative bg-transparent"
     >
       {items.map((item, idx) => (
         <DraggableItem
@@ -91,6 +95,7 @@ export function PuzzleColumn({ section, items, onDrop, onDragOver, onDragStart }
           section={section}
           index={idx}
           onDragStart={onDragStart}
+          onTouchDrop={onTouchDrop}
         />
       ))}
     </div>

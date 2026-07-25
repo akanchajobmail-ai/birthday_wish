@@ -51,11 +51,17 @@ export function PuzzleGame({ onHeartClick }) {
 
   return (
     <div className="flex flex-col gap-3 sm:gap-6 lg:gap-10 px-3 sm:px-6 lg:px-10 py-3 sm:py-6 lg:py-10 bg-gradient-to-br from-[#ffeef8] to-[#ffe4f1] min-h-full items-center justify-center overflow-x-hidden">
-      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#c9184a] text-center mb-4 sm:mb-6 animate-pulse" style={{ textShadow: '0 2px 4px rgba(201, 24, 74, 0.15)', letterSpacing: '-0.5px' }}>
+      <h1
+        className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#c9184a] text-center mb-2 sm:mb-6 animate-pulse"
+        style={{
+          textShadow: "0 2px 4px rgba(201, 24, 74, 0.15)",
+          letterSpacing: "-0.5px",
+        }}
+      >
         {PUZZLE_MESSAGES.title}
       </h1>
 
-      <div className="flex flex-col items-center gap-2 sm:gap-3 max-w-[600px] mx-auto mb-6 sm:mb-8">
+      <div className="flex flex-col items-center gap-2 sm:gap-3 max-w-[600px] mx-auto mb-4 sm:mb-8">
         <p className="text-base sm:text-lg lg:text-xl text-[#c9184a] font-semibold text-center leading-relaxed tracking-wide">
           {PUZZLE_MESSAGES.instruction1}
         </p>
@@ -73,11 +79,12 @@ export function PuzzleGame({ onHeartClick }) {
             onDrop={handleDrop}
             onDragOver={handleDragOver}
             onDragStart={handleDragStart}
+            onTouchDrop={handleDrop}
           />
         ))}
       </div>
 
-      <div className="text-sm sm:text-base text-[#c9184a] text-center font-medium px-4 sm:px-6 py-2 sm:py-4 bg-pink-200/20 border-l-[3px] border-[#ff69b4] rounded-lg mt-4 sm:mt-6 max-w-[500px] mx-auto opacity-85">
+      <div className="text-sm sm:text-base text-[#c9184a] text-center font-medium px-4 sm:px-6 py-2 sm:py-4 bg-pink-200/20 border-l-[3px] border-[#ff69b4] rounded-lg mt-2 sm:mt-6 max-w-[500px] mx-auto opacity-85">
         💡 {PUZZLE_MESSAGES.hint}
       </div>
     </div>

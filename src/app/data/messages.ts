@@ -11,6 +11,8 @@ export const INTRO_MESSAGES = {
 /* ---- PUZZLE GAME TEXT ---- */
 export const PUZZLE_MESSAGES = {
   title: '💕 COMPLETE THE PUZZLE 💕',
+  instruction1: 'Drag (or slide on mobile) the heart pieces to the centre 💕',
+  instruction2: 'Bring the left and right pieces together to reunite the heart ✨',
   hint: 'Left piece goes on the left, right piece goes on the right',
 };
 
